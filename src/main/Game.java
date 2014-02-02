@@ -8,8 +8,17 @@ import javafx.stage.WindowEvent;
 import snake.SnakeGame;
 
 public class Game extends Application {
+	private static String appleColor;
+	private static String snakeColor;
 
 	public static void main(String[] args) {
+		if (args.length == 0) {
+			snakeColor = "-fx-background-color:linear-gradient(lime,limegreen)";
+			appleColor = "-fx-background-color:linear-gradient(green,forestgreen)";
+		} else {
+			snakeColor = args[0];
+			appleColor = args[1];
+		}
 		launch();
 	}
 
@@ -26,8 +35,8 @@ public class Game extends Application {
 		stage.setScene(scene);
 		stage.show();
 
-		snake.setAppleColor("-fx-background-color: linear-gradient(green, forestgreen)");
-		snake.setSnakeColor("-fx-background-color: linear-gradient(yellow, black)");
+		snake.setAppleColor(appleColor);
+		snake.setSnakeColor(snakeColor);
 
 		snake.startGame();
 	}
